@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+    <title>iTMS</title>
+    <!--    <link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />
+    <link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+    <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+    <link href="themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="themes/bladecolor.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="themes/bootstrap.min.css">
+
+    <!-- Owl Carousel Assets -->
+    <link href="OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="OWL/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="themes/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="themes/jqm-demos.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css">
+    <link href="themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/site.css" rel="stylesheet" />
+    <!--<script src="scripts/lib/jquery-1.8.2.js"></script>-->
+        <script type="text/javascript" src="cordova.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.js"></script>
+    <script src="OWL/owl-carousel/owl.carousel.js"></script>
+    <script src="scripts/app/knockout.jquery.mobile.js"></script>
+    <!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
+    <script src="scripts/lib/amplify.js"></script>
+    <script src="scripts/lib/knockout-2.2.0.js"></script>
+    <script src="scripts/lib/knockout.mapping-latest.js"></script>
+    <script src="scripts/lib/koExternalTemplateEngine_all.js"></script>
+    <script src="scripts/lib/moment.min.js"></script>
+    <script src="scripts/app/staticdata.js"></script>
+    <script src="scripts/app/util.js"></script>
+    <script src="scripts/app/services/appointment.js"></script>
+    <script src="scripts/app/viewmodel/NewAppointmentViewModel.js"></script>
+    <script src="scripts/app/ko.extentions.js"></script>
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/newAppointmentApp.js"></script>
+    <script type="text/javascript">
+        function getFromAndroid(str) {    //接收来自android的数据
+            document.getElementById("autocompleteDN").innerHTML = str;
+            //如果要抓ListView的filter，如果是页面上的第一个就按照下面这样写，类似第二个就是.eq(1)
+            //$("input[data-type='search']").eq(0).val(str);
+        }
+    </script>
+    <link rel="shortcut icon" href="favicon.ico">
+    </head>
+    <body>
+<div data-role="page" id="startAppointmentView">
+      <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner4.jpg); background-size:cover;">
+          <p align="center"><img class="popphoto" src="images/itmslogo3.png" height="24px"></p>
+          <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+        </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/tweets-bg2.jpg)">
+          <p align="center"><a href="#"><img class="popphoto" src="images/calendar.png" height="60px"></a></p>
+          <p align="center"><font size="5" color="gray"><b>仅需2步完成创建</b></font></p>
+          <div class="ui-nodisc-icon ui-alt-icon">
+        <p align="center"> <a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-r ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;" data-bind="click:go">Go</a></p>
+      </div>
+          
+          <!-- /content --> 
+        </div>
+    <div class="ui-grid-b">
+          <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg.jpg)"><font color="#264C67"><b>交货预约</b></font><br>
+              <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="signin.html" rel="external"><font color="#222B56"><i class="fa fa-3x fa-calendar-plus-o"></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#222B56" size="4"><b>TP</b></font><br>
+                <font color="#222B56" size="2">X1</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+          <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/works-bg.jpg);"><font color="#264C67"><b>我的iTMS</b></font><br>
+              <font size="1">账户状态&nbsp;<i class="fa fa-check-square-o"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-user "></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#8E9BB3" size="4"><b>供应商ID</b></font><br>
+                <font color="#8E9BB3" size="2">SD01A</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+        </div>
+  </div>
+      <br>
+      <br>
+      <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+    </div>
+<!-- /page -->
+
+<div data-role="page" id="theFirstStepView" data-theme="b">
+      <div data-role="popup" id="validationMsg" data-overlay-theme="b" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+          <p align="center"><i class="fa fa-2x fa-frown-o"></i></p>
+          <div data-bind="html:carInformation.validationMsg"></div>
+          <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="b">确定</a></p>
+        </div>
+  </div>
+      <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner4.jpg); background-size:cover;">
+          <p align="center"><img class="popphoto" src="images/itmslogo3.png" height="24px"></p>
+          <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+        </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/works-bg.jpg);">
+          <p align="center"><i class="fa fa-2x fa-calendar-plus-o"></i><br>
+        <font size="-1">第一步</font></p>
+          <fieldset data-role="collapsible" data-theme="a" data-content-theme="a" data-mini="true" data-collapsed="false">
+        <legend><font color="#636363"><i class="fa fa-truck"></i>&nbsp;+&nbsp;<i class="fa fa-clock-o"></i></font></legend>
+        <div style="padding:5px 5px;" data-bind="with:carInformation">
+              <label for="un" class="ui-hidden-accessible">driver name:</label>
+              <input type="text" name="un" id="un" value="" placeholder="驾驶员" data-theme="a" data-inline="true" data-bind="value:driver" required>
+              <label for="mb" class="ui-hidden-accessible">mobile:</label>
+              <input type="tel" name="tel" id="mb" value="" placeholder="手机" data-theme="a" data-inline="true" data-bind="value:mobile">
+              <fieldset class="ui-grid-a">
+            <div class="ui-block-a">
+                  <select name="select-native-2" id="select-native-2" data-theme="a" data-bind="options:vehicleTypeOptions,value:vehicleType">
+              </select>
+                </div>
+            <div class="ui-block-b">
+                  <select name="select-native-3" id="select-native-3" data-theme="a" data-bind="options:provincesOptions,value:vehicleAbbrev">
+              </select>
+                </div>
+          </fieldset>
+              <label for="lc" class="ui-hidden-accessible">license:</label>
+              <input type="text" name="lc" id="lc" value="" placeholder="车牌号" data-theme="a" data-inline="true" data-bind="value:vehicleLicenseNumber">
+            </div>
+        <div style="padding:5px 5px;">
+              <label for="appdate"><font color="gray">预约送货日期及时间</font></label>
+              <input type="date" name="pDate" id="pDate" data-bind="value:pDate" placeholder="预约日期" data-theme="a" data-inline="true">
+              <input type="time" name="pETime" id="pETime" data-bind="value:pETime" placeholder="最早到达时间" data-theme="a" data-inline="true" >
+              <input type="time" name="pLTime" id="pLTime" data-bind="value:pLTime" placeholder="最晚达到事件" data-theme="a" data-inline="true" >
+            </div>
+      </fieldset>
+          <p align="center"> <a href="#" data-role="button" data-inline="true" data-icon="carat-r" data-theme="d" data-bind="click:nextStepToAddDeliverOrderPage" style="margin-right: 0px;">下一步</a> </p>
+        </div>
+    <div class="ui-grid-b">
+          <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg.jpg)"><font color="#264C67"><b>交货预约</b></font><br>
+              <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="signin.html" rel="external"><font color="#222B56"><i class="fa fa-3x fa-calendar-plus-o"></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#222B56" size="4"><b>TP</b></font><br>
+                <font color="#222B56" size="2">X1</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+          <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/works-bg.jpg);"><font color="#264C67"><b>我的iTMS</b></font><br>
+              <font size="1">账户状态&nbsp;<i class="fa fa-check-square-o"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-user "></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#8E9BB3" size="4"><b>供应商ID</b></font><br>
+                <font color="#8E9BB3" size="2">SD01A</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+        </div>
+  </div>
+      <br>
+      <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+      <!-- /content --> 
+      
+    </div>
+<!-- /page -->
+
+<div data-role="page" id="theSecondStepView" data-theme="a" data-bind="with:deliveryOrderInformation">
+      <div data-role="popup" id="validationMsgOfDelivery" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+          <p align="center"><i class="fa fa-2x fa-frown-o"></i></p>
+          <div data-bind="html: validationMsgOfDelivery"></div>
+          <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
+        </div>
+  </div>
+      <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner4.jpg); background-size:cover;">
+          <p align="center"><img class="popphoto" src="images/itmslogo3.png" height="24px"></p>
+          <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+        </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px;">
+          <p align="center"><i class="fa fa-2x fa-archive"></i><br>
+        <font size="-1">第二步</font></p>
+          <input id="autocompleteV" type="text" data-theme="a" disabled placeholder="输入供应商代码..." data-bind="value:vendorCode">
+          <input id="autocompleteDN" type="text" data-theme="a" placeholder="输入交货单号..." data-bind="value:deliveryNoteIdToAdd">
+          <div class="ui-nodisc-icon ui-alt-icon">
+        <p align="center">
+            <a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-inline" data-bind="click:scanCode">Scan</a>
+            <a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline"  data-bind="click:addOneDeliveryNoteId">Add</a>
+        </p>
+      </div>
+          <fieldset data-role="collapsible" data-theme="a" data-content-theme="a" data-mini="true" data-collapsed="false">
+        <legend>交货单</legend>
+        <ul data-role="listview" data-inset="true" data-theme="e" data-bind="foreach:deliveryNoteId,jqmRefreshList:deliveryNoteId">
+              <li data-icon="delete" data-bind="click:$parent.removeOneDeliveryId"><a href="#"><span data-bind="text: $data"></span></a></li>
+            </ul>
+      </fieldset>
+          <p align="center" > <a href="#" style="margin-right:0px;" data-role="button" data-inline="true" data-icon="back" data-theme="d" data-bind="click:$parent.goBackToCarInformationPage">返回</a>&nbsp;&nbsp;<a href="#" style="margin-right:0px;" data-role="button" data-inline="true" data-icon="carat-r" data-theme="d" data-bind="click:$parent.nextStepToSubmitPage">下一步</a> </p>
+        </div>
+    <div class="ui-grid-b">
+          <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg.jpg)"><font color="#264C67"><b>交货预约</b></font><br>
+              <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="signin.html" rel="external"><font color="#222B56"><i class="fa fa-3x fa-calendar-plus-o"></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#222B56" size="4"><b>TP</b></font><br>
+                <font color="#222B56" size="2">X1</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+          <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/works-bg.jpg);"><font color="#264C67"><b>我的iTMS</b></font><br>
+              <font size="1">账户状态&nbsp;<i class="fa fa-check-square-o"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-user "></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#8E9BB3" size="4"><b>供应商ID</b></font><br>
+                <font color="#8E9BB3" size="2">SD01A</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+        </div>
+  </div>
+      <br>
+      <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+    </div>
+<!-- /page -->
+
+<div data-role="page" id="theThirdStepView">
+      <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+          <p align="center"><i class="fa fa-2x fa-frown-o"></i></p>
+          <p><span data-bind="text:errMsg"></span></p>
+          <p align="center"><a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="a">确定</a></p>
+        </div>
+  </div>
+      <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner4.jpg); background-size:cover;">
+          <p align="center"><img class="popphoto" src="images/itmslogo3.png" height="24px"></p>
+          <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+        </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/works-bg.jpg);">
+          <p align="center"><i class="fa fa-2x fa-clone"></i><br>
+        <font size="-1">概览信息</font></p>
+          <fieldset data-role="collapsible" data-theme="a" data-content-theme="a" data-mini="true" data-collapsed="false">
+        <legend>车辆及时间</legend>
+        <div style="padding:5px 5px;">
+              <div data-role="fieldcontain">
+            <label for="txdr">到达日期:</label>
+            <input type="date" name="pETime" id="pETime" disabled="disabled" data-mini="true" data-bind="value:pDate">
+            <label for="txdr">最早到达时间:</label>
+            <input type="time" name="pETime" id="pETime" disabled="disabled" data-mini="true" data-bind="value:pETime">
+            <label for="txdr">最晚到达时间:</label>
+            <input type="time" name="pLTime" id="pLTime" disabled="disabled" data-mini="true" data-bind="value:pLTime">
+            <label for="txdr">驾驶员:</label>
+            <input type="text" name="txdr" id="txdr" value="Driver Name" disabled="disabled" data-mini="true" data-bind="value:carInformation.driver">
+            <label for="txmb">手机:</label>
+            <input type="text" name="txmb" id="txmb" value="Mobile" disabled="disabled" data-mini="true" data-bind="value:carInformation.mobile">
+            <label for="txlc">车牌:</label>
+            <input type="text" name="txlc" id="txlc" value="车牌" disabled="disabled" data-mini="true" data-bind="value:carInformation.vehicleLicense">
+            <label for="txvt">车型:</label>
+            <input type="text" name="txvt" id="txvt" value="飞翼" disabled="disabled" data-mini="true" data-bind="value:carInformation.vehicleType">
+            <label for="vd">供应商:</label>
+            <input type="text" name="vd" id="vd" disabled="disabled" data-mini="true" data-bind="value:deliveryOrderInformation.vendorCode">
+          </div>
+            </div>
+      </fieldset>
+          <fieldset data-role="collapsible" data-theme="a" data-content-theme="a" data-mini="true" data-bind="with:deliveryOrderInformation">
+        <legend>交货单信息</legend>
+        <ul data-role="listview" id="deliveryNotesOverview" data-inset="true" data-theme="a" data-bind="foreach:deliveryNoteId,jqmRefreshList:deliveryNoteId">
+              <li data-icon="check"><a href="#"><span data-bind="text: $data"></span></a></li>
+            </ul>
+      </fieldset>
+          <p align="center"> 
+        <!--<a href="#" data-role="button" data-inline="true"  data-icon="back" data-theme="d" data-bind="click:goBackToDeliveryOrderInformation">返回</a>--> 
+        <!--<a href="#" data-role="button" data-inline="true" data-icon="check" data-theme="b" data-bind="click:submit,disable:disableSubmit">提交</a>-->
+        <input type="button" data-inline="true" data-theme="d" data-icon="back" value="返回" data-bind="click:goBackToDeliveryOrderInformation" style="margin-right:0px;">
+        <input type="button" data-inline="true" data-theme="d" data-icon="check" value="提交" data-bind="click:submit,jQueryButtonDisable:disableSubmit" style="margin-right:0px;">
+      </p>
+        </div>
+    <div class="ui-grid-b">
+          <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg.jpg)"><font color="#264C67"><b>交货预约</b></font><br>
+              <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="signin.html" rel="external"><font color="#222B56"><i class="fa fa-3x fa-calendar-plus-o"></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#222B56" size="4"><b>TP</b></font><br>
+                <font color="#222B56" size="2">X1</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+          <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/works-bg.jpg);"><font color="#264C67"><b>我的iTMS</b></font><br>
+              <font size="1">账户状态&nbsp;<i class="fa fa-check-square-o"></i></font><br>
+              <div class="ui-grid-a">
+            <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-user "></i></font></a></p>
+                </div>
+            <div class="ui-block-b">
+                  <p align="right"><font color="#8E9BB3" size="4"><b>供应商ID</b></font><br>
+                <font color="#8E9BB3" size="2">SD01A</font></p>
+                </div>
+          </div>
+            </div>
+      </div>
+        </div>
+  </div>
+      <br>
+      <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+      <!-- /content --> 
+    </div>
+<!-- /page -->
+<div data-role="page" id="resultView">
+      <div data-role="content">
+    <p align="center"><i class="fa fa-3x fa-calendar-check-o"></i></p>
+    <p align="center"> <font size="2" color="gray">预约结果</font><br>
+        </p>
+  </div>
+      <div style="padding:0px 0px;">
+    <p align="center">
+          <font size="2" color="green">创建成功</font><br>
+          <br>
+          <font size="4" color="green"><b>预约号: <span data-bind="text:sucessfullAppointmentId"></span></b></font> </p>
+  </div>
+      <div data-role="content">
+      
+    <p align="center"><a href="#startAppointmentView" style="margin-right:0px;" data-role="button" data-inline="true" data-icon="back" data-theme="d">返回</a><br><br><br>
+    <a href="#startAppointmentView" ><img class="popphoto" src="images/itmslogo1.png" height="20px"></a> </p>
+  </div>
+      <!-- /content --> 
+    </div>
+<!-- /page -->
+<style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<style>
+    #owl-demo2 .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<script>
+$(document).ready(function() {
+ 
+  var owl = $("#owl-demo");
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true, 
+	pagination : false,
+    transitionStyle : "fadeUp"
+  });
+
+  var owl = $("#owl-demo2");  
+ 
+  owl.owlCarousel({
+
+    autoPlay : 6000,
+    singleItem : true,
+    autoHeight : true,
+	pagination : false,
+    transitionStyle : "goDown"
+  });
+ 
+});
+    </script> 
+<script src="OWL/assets/js/bootstrap-collapse.js"></script> 
+<script src="OWL/assets/js/bootstrap-transition.js"></script> 
+<script src="OWL/assets/js/bootstrap-tab.js"></script> 
+<script src="OWL/assets/js/google-code-prettify/prettify.js"></script> 
+<script src="OWL/assets/js/application.js"></script>
+</body>
+</html>

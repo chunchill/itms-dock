@@ -1,0 +1,188 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>iTMS</title>
+<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />-->
+<link href="themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+
+<!--<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+
+<link rel="stylesheet" href="themes/bladecolor.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="themes/bootstrap.min.css">
+
+<!-- Owl Carousel Assets -->
+<link href="OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.theme.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="themes/bootstrap-theme.min.css">
+<link rel="stylesheet" href="themes/jqm-demos.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css">
+<link href="themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/site.css" rel="stylesheet" />
+<!--<script src="scripts/lib/jquery-1.8.2.js"></script>
+<!--<script src="scripts/app/knockout.jquery.mobile.js"></script>-->
+<!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
+
+<script src="vendor/jquery/dist/jquery.js"></script>
+<script src="lib/jquery.mobile-1.4.5.js"></script>
+<script src="OWL/owl-carousel/owl.carousel.js"></script>
+<script src="scripts/app/util.js"></script>
+<script src="scripts/lib/amplify.js"></script>
+<script src="scripts/lib/knockout-2.2.0.js"></script>
+<script src="scripts/lib/knockout.mapping-latest.js"></script>
+<script src="scripts/lib/koExternalTemplateEngine_all.js"></script>
+<script src="scripts/app/services/user.js"></script>
+<script src="scripts/app/viewmodel/LogonViewModel.js"></script>
+<script src="scripts/app/ko.extentions.js"></script>
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/logonApp.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<div data-role="page" id="logonView" data-theme="a">
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner4.jpg); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"><img class="popphoto" src="images/itmslogo3.png" height="24px"></p>
+      <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+    </div>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg.jpg)"><font color="#264C67"><b>交货预约</b></font><br>
+          <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="signin.html" rel="external"><font color="#222B56"><i class="fa fa-3x fa-calendar-plus-o"></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#222B56" size="4"><b>TP</b></font><br>
+                <font color="#222B56" size="2">X1</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div id="owl-demo2" class="owl-carousel owl-theme">
+          <div class="item">
+            <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover"><font color="#264C67"><b>欢迎使用iTMS</b></font><br>
+              <font size="1">通过丰富的小应用提升作业效率&nbsp;<i class="fa fa-commenting"></i></font><br>
+              <div class="ui-grid-a">
+                <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-hand-peace-o "></i></font></a></p>
+                </div>
+                <div class="ui-block-b">
+                  <p align="right"><font color="#8E9BB3" size="4"><b></b></font><br>
+                    <font color="#8E9BB3" size="2"></font></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/tweets-bg.jpg)"><font color="#264C67"><b>通过供应商账号创建运输预约</b></font><br>
+              <font size="1">您可以通过扫描交货单快速创建交货明细&nbsp;<i class="fa fa-search"></i></font><br>
+              <div class="ui-grid-a">
+                <div class="ui-block-a">
+                  <p align="left"><a href="driverindex.html" rel="external"><font color="#4D4D4D"><i class="fa fa-3x fa-barcode "></i></font></a></p>
+                </div>
+                <div class="ui-block-b">
+                  <p align="right"><font color="#4D4D4D" size="4"><b><i class="fa fa-plug"></i></b></font><br>
+                    <font color="#4D4D4D" size="2">GPS, 摄像头</font></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 4px 4px; background-image:url(images/tweets-bg2.jpg);">
+      <form>
+        <div data-role="controlgroup" style="padding: 0px 7px">
+          <input type="text" name="user" id="un" value="" placeholder="用户名" data-theme="b" data-inline="true" data-bind="value:user" data-wrapper-class="controlgroup-textinput ui-btn" >
+          <input type="password" name="pass" id="pw" value="" placeholder="密码" data-theme="b" data-inline="true" data-bind="value:pwd" data-wrapper-class="controlgroup-textinput ui-btn">
+        </div>
+        <p align="center"><i class="fa fa-2x fa-sign-in"></i></p>
+        <div data-role="controlgroup" style="padding: 0px 7px">
+          <button data-theme="a" data-bind="click:login">登录</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+  <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+    <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="24px"></p>
+    <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+      <li><a href="signin.html" rel="external"> <img src="images/calendar.png" alt="ongoing" class="ui-li-icon ui-corner-none"><font size="2">创建预约</font></a></li>
+      <li><a href="driverindex.html" rel="external"> <img src="images/GPS_route_512.png" alt="plan" class="ui-li-icon"><font size="2">预约执行</font></a></li>
+      <li><a href="help.html" rel="external"> <img src="images/unknown.png" alt="plan" class="ui-li-icon"><font size="2">帮助</font></a></li>
+    </ul>
+    <div class="ui-nodisc-icon ui-alt-icon">
+      <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+    </div>
+  </div>
+  <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="b" data-transition="pop" style="max-width:320px;" class="ui-corner-all">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+      <p align="center"><i class="fa fa-2x fa-frown-o"></i><br>
+        <br>
+        <font size="2">检查网络连接及用户名和密码</font></p>
+      <br>
+      <p align="center"><a href="#" data-role="button"  data-rel="back" data-transition="flow" data-theme="d">确定</a></p>
+    </div>
+  </div>
+</div>
+<style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<style>
+    #owl-demo2 .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<script>
+$(document).ready(function() {
+ 
+  var owl = $("#owl-demo");
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true, 
+	pagination : false,
+    transitionStyle : "fadeUp"
+  });
+
+  var owl = $("#owl-demo2");  
+ 
+  owl.owlCarousel({
+
+    autoPlay : 6000,
+    singleItem : true,
+    autoHeight : true,
+	pagination : false,
+    transitionStyle : "goDown"
+  });
+ 
+});
+</script> 
+<script src="OWL/assets/js/bootstrap-collapse.js"></script> 
+<script src="OWL/assets/js/bootstrap-transition.js"></script> 
+<script src="OWL/assets/js/bootstrap-tab.js"></script> 
+<script src="OWL/assets/js/google-code-prettify/prettify.js"></script> 
+<script src="OWL/assets/js/application.js"></script>
+</body>
+</html>

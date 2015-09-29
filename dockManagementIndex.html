@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>iTMS</title>
+<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />
+<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+<link href="themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="themes/bladecolor.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="themes/bootstrap.min.css">
+
+<!-- Owl Carousel Assets -->
+<link href="OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.theme.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="themes/bootstrap-theme.min.css">
+<link rel="stylesheet" href="themes/jqm-demos.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css">
+<link href="themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/site.css" rel="stylesheet" />
+<script src="scripts/lib/moment.min.js"></script>
+<script src="scripts/lib/jquery-1.8.2.js"></script>
+<!--<script src="scripts/app/knockout.jquery.mobile.js"></script>-->
+<script src="lib/jquery.mobile-1.4.5.js"></script>
+<script src="OWL/owl-carousel/owl.carousel.js"></script>
+<script src="scripts/lib/amplify.js"></script>
+<script src="scripts/lib/knockout-2.2.0.js"></script>
+<script src="scripts/lib/knockout.mapping-latest.js"></script>
+<script src="scripts/lib/koExternalTemplateEngine_all.js"></script>
+<script src="scripts/app/services/appointment.js"></script>
+<script src="scripts/app/viewmodel/DockManagementViewModel.js"></script>
+<script src="scripts/app/ko.extentions.js"></script>
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/dockManagementApp.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<div data-role="page" id="dockManagementView">
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner14.png); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="24px"></p>
+      <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+    </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; border-color:#E4E4E4;">
+      <p align="center"><font color="gray"><i class="fa fa-2x fa-code-fork"></i></font></p>
+      <p align="center"><font size="2">道口分配</font> </p>
+      <form>
+        <div style="padding:5px 5px;"> 
+          <script type="text/html" id="appointmentItem">
+                        <li data-icon="gear">
+                            <a href="#" data-rel="popup" data-transition="pop" data-bind="click:$parent.itemClicked">
+                                <input type="hidden" data-bind="value:status" />
+                                <span class="ui-li-count"><span data-bind="text:dock"></span></span>
+                                <p><strong data-bind="text:applicationId"></strong></p>
+                                <p>车型: <span data-bind="text:vehicleType"></span></p>
+                                <p>供应商: <span data-bind="text:vendorCode"></span></p>
+                                <p>车牌: <span data-bind="text:vehicleLicense"></span></p>
+                                <p>手机:<span data-bind="text:mobile"></span></p>
+                                <p>货量:<span data-bind="text:deliveryVolSum"></span></p>
+                                <p>计划日期:<span data-bind="text:planedDevelieryDate"></span></p>
+                                <p>计划时间段:<span data-bind="text:planedEarliestDevelieryDate"></span>-<span data-bind="text:planedLatestDevelieryDate"></span></p>
+                            </a>
+                        </li>
+                    </script>
+          <div data-role="collapsible" data-theme="a" data-content-theme="a"  class="ui-icon-alt" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+            <h2>已入场</h2>
+            <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true"  data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'appointmentItem', foreach:alreadyEntryItems},jqmRefreshList:alreadyEntryItems">
+            </ul>
+          </div>
+          <div data-role="collapsible" data-theme="a" data-content-theme="a"  class="ui-icon-alt" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+            <h2>已到达</h2>
+            <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true"   data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'appointmentItem', foreach:alreadyArrivedItems},jqmRefreshList:alreadyArrivedItems">
+            </ul>
+          </div>
+          <div data-role="collapsible" data-theme="a" data-content-theme="a"   class="ui-icon-alt" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+            <h2>在途</h2>
+            <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true"  data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'appointmentItem', foreach:onWayItems},jqmRefreshList:onWayItems">
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div data-role="popup" id="pop_dock" data-theme="a" data-overlay-theme="a" style="min-width:320px">
+      <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
+        <li data-role="divider" data-theme="a">选择道口</li>
+        <li data-icon="home"><a href="#" data-bind="click:onSelectDock.bind($data,1)">1</a></li>
+        <li data-icon="home"><a href="#" data-bind="click:onSelectDock.bind($data,2)">2</a></li>
+        <li data-icon="home"><a href="#" data-bind="click:onSelectDock.bind($data,3)">3</a></li>
+        <li data-icon="home"><a href="#" data-bind="click:onSelectDock.bind($data,4)">4</a></li>
+        <li data-icon="delete"><a href="#" data-bind="click:onSelectDock.bind($data,0)">取消分配</a></li>
+      </ul>
+    </div>
+    <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all">
+      <div data-role="content" data-theme="a" class="ui-corner-bottom ui-content">
+        <p align="center"><i class="fa fa-2x fa-frown-o"></i></p>
+        <p align="center"> <a href="#" data-role="button" data-rel="back" data-transition="flow" data-theme="a">确定</a></p>
+      </div>
+    </div>
+    <div data-role="panel" id="panelgrid" data-position-fixed="true" data-position="right" data-display="overlay" data-theme="a">
+      <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="20px" style="margin-bottom: 10px;"></p>
+      <ul data-role="listview" data-inset="true" data-theme="b" class="ui-nodisc-icon ui-alt-icon">
+        <li><a href="#" rel="external"> <img src="images/message.png" alt="plan" class="ui-li-icon"><font size="2">关于</font></a></li>
+        <li><a href="helpsaic.html" rel="external"> <img src="images/unknown.png" alt="plan" class="ui-li-icon"><font size="2">使用帮助</font></a></li>
+      </ul>
+      <div class="ui-nodisc-icon ui-alt-icon">
+        <p align="center"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">back</a></p>
+      </div>
+    </div>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px;"><font color="#264C67"><b>道口分配</b></font><br>
+          <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="dockmanagementindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-code-fork "></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b>TE</b></font><br>
+                <font size="2" color="#8E9BB3">X3</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover"><font color="#264C67"><b>欢迎使用iTMS</b></font><br>
+          <font size="1">通过丰富的小应用提升作业效率&nbsp;<i class="fa fa-commenting"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-hand-peace-o "></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b></b></font><br>
+                <font color="#8E9BB3" size="2"></font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+    <!-- /content --> 
+  </div>
+  <!-- /page --> 
+</div>
+<style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<style>
+    #owl-demo2 .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<script>
+$(document).ready(function() {
+ 
+  var owl = $("#owl-demo");
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true, 
+	pagination : false,
+    transitionStyle : "fadeUp"
+  });
+
+  var owl = $("#owl-demo2");  
+ 
+  owl.owlCarousel({
+
+    autoPlay : 6000,
+    singleItem : true,
+    autoHeight : true,
+	pagination : false,
+    transitionStyle : "goDown"
+  });
+ 
+});
+    </script> 
+<script src="OWL/assets/js/bootstrap-collapse.js"></script> 
+<script src="OWL/assets/js/bootstrap-transition.js"></script> 
+<script src="OWL/assets/js/bootstrap-tab.js"></script> 
+<script src="OWL/assets/js/google-code-prettify/prettify.js"></script> 
+<script src="OWL/assets/js/application.js"></script>
+</body>
+</html>

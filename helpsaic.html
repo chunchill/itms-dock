@@ -1,0 +1,150 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>iTMS</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" href="css/jqm-demos.css">
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="js/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+
+
+    <!-- Owl Carousel Assets -->
+    <link href="OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="OWL/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+
+
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
+ 
+
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+
+    <div data-role="page" id="logonView" data-theme="c">
+        <div data-role="content">
+            <p align="center"><a href="#"><img class="popphoto" src="images/help.png" height="100px"></a><br><font size="5" color="gray">使用帮助</font></p>
+<br>
+
+
+   <div class="ui-grid-a ui-responsive">
+        	<div class="ui-block-a"><p align="center"><font color="gray">出入场管理</font></p>
+                        <div class="jqm-block-content">
+        	     <div id="owl-demo" class="owl-carousel owl-theme">
+
+                <div class="item"><img src="images/dstep1.png" alt="1"></div>
+                <div class="item"><img src="images/dstep2.png" alt="2"></div>
+
+                         </div>
+                     </div>
+                    </div>
+
+        	<div class="ui-block-b"><p align="center"><font color="gray">道口分配</font></p>
+                        <div class="jqm-block-content">
+        	      <div id="owl-demo2" class="owl-carousel owl-theme">
+
+                <div class="item"><img src="images/astep1.png" alt="1"></div>
+                <div class="item"><img src="images/astep2.png" alt="2"></div>
+
+                       </div>
+                     </div>
+                  </div>
+
+                  </div>
+ 
+
+
+       <br><p align="center"> <a href="#" data-rel="back"  class="ui-icon-nodisc" data-role="button"  data-icon="back" data-iconshadow="false" data-iconpos="notext" data-theme="b" >Language</a></p><br><br>
+    <p align="center"><a href="home.html" rel="external"><img class="popphoto" src="images/itmslogo1.png" height="20"></a></p>
+        </div><!-- /content -->
+
+  <!-- defaultpanel  -->
+  <div data-role="panel" id="defaultpanel" data-theme="a" data-display="overlay" data-position="left">	
+    <div class="panel-content">
+      <p align="center">我的 <font color="orange"><b>iTMS</b></font>
+     <br><font size="2" font color="gray">预约管理</font></p>
+
+<ul data-role="listview" data-inset="true" class="ui-icon-alt" data-theme="d">
+    <li data-icon="home"><a href="entrymanagementIndex.html" rel="external">出入场管理</a></li>
+    <li data-icon="gear"><a href="dockManagementIndex.html" rel="external">道口分配</a></li>
+    <li data-icon="info"><a href="helpsaic.html" rel="external">应用手册</a></li>
+</ul>
+<br><br>
+      <p align="center"><a href="#" data-rel="close"  class="ui-icon-nodisc" data-role="button"  data-icon="back" data-iconshadow="false" data-iconpos="notext" data-theme="b" >Close</a></p>
+    </div><!-- /content wrapper for padding -->
+  </div><!-- /defaultpanel -->
+
+  
+    </div><!-- /page -->
+
+    <script src="OWL/owl-carousel/owl.carousel.js"></script>
+
+
+    <!-- Demo -->
+
+
+    <style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+    <style>
+    #owl-demo2 .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+
+
+    <script>
+$(document).ready(function() {
+ 
+  var owl = $("#owl-demo");
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true,
+    transitionStyle : "fadeUp"
+  });
+
+  var owl = $("#owl-demo2");  
+ 
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true,
+    transitionStyle : "fadeUp"
+  });
+ 
+});
+    </script>
+
+
+    <script src="OWL/assets/js/bootstrap-collapse.js"></script>
+    <script src="OWL/assets/js/bootstrap-transition.js"></script>
+    <script src="OWL/assets/js/bootstrap-tab.js"></script>
+
+    <script src="OWL/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="OWL/assets/js/application.js"></script>
+</body>
+</html>

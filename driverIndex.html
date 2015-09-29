@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>iTMS</title>
+<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />
+<link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
+<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" />-->
+<link href="themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="themes/bladecolor.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="themes/bootstrap.min.css">
+
+<!-- Owl Carousel Assets -->
+<link href="OWL/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.theme.css" rel="stylesheet">
+<link href="OWL/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="themes/bootstrap-theme.min.css">
+<link rel="stylesheet" href="themes/jqm-demos.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css">
+<link href="themes/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/site.css" rel="stylesheet" />
+<script src="scripts/lib/jquery-1.8.2.js"></script>
+<!--<script src="scripts/app/knockout.jquery.mobile.js"></script>-->
+<!--<script src="scripts/lib/jquery.mobile-1.3.2.js"></script>-->
+<script src="lib/jquery.mobile-1.4.5.js"></script>
+<script src="OWL/owl-carousel/owl.carousel.js"></script>
+<script src="scripts/lib/amplify.js"></script>
+<script src="scripts/lib/knockout-2.2.0.js"></script>
+<script src="scripts/lib/knockout.mapping-latest.js"></script>
+<script src="scripts/lib/koExternalTemplateEngine_all.js"></script>
+<script src="scripts/app/util.js"></script>
+<script src="scripts/app/services/appointment.js"></script>
+<script src="scripts/app/viewmodel/InputMobilePageViewModel.js"></script>
+<script src="scripts/app/viewmodel/MyReservationViewModel.js"></script>
+<script src="scripts/app/viewmodel/ReservationDetailViewModel.js"></script>
+<script src="scripts/app/ko.extentions.js"></script>
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/driverApp.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+<div data-role="page" id="driverInputMobileView" data-theme="c">
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/bg-profile.png); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="24px"></p>
+      <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+    </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; border-color:#E4E4E4;">
+      <p align="center"><i class="fa fa-2x fa-calendar-check-o"></i></p>
+      <p align="center"> <font size="2">我的任务</font> </p>
+      <p align="center" style="padding: 8px 8px">
+        <input type="tel" data-theme="a" data-clear-btn="false" name="tel-1" id="tel-1" data-bind="value:mobileNumber" placeholder="请输入手机号">
+      </p>
+      <p align="center"> <a href="#" data-bind="click:submit" data-transition="pop" data-role="button" data-icon="check" data-iconpos="left" data-inline="true" data-theme="d" style="margin-right:0px">登录</a> </p>
+    </div>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px;"><font color="#264C67"><b>预约执行</b></font><br>
+          <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="#" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-truck"></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b>TE</b></font><br>
+                <font size="2" color="#8E9BB3">X1</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover"><font color="#264C67"><b>欢迎使用iTMS</b></font><br>
+          <font size="1">通过丰富的小应用提升作业效率&nbsp;<i class="fa fa-commenting"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-hand-peace-o "></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b></b></font><br>
+                <font color="#8E9BB3" size="2"></font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+  
+  <!-- /content --> 
+</div>
+<!-- ### A page that renders the myReservationViewModel -->
+<div data-role="page" id="myReservationView"> 
+  <!--  <div data-role="content" data-bind="template:{name:'myReservation'}">
+        </div>-->
+  
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/bg-profile.png); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="24px"></p>
+      <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+    </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; border-color:#E4E4E4;">
+      <p align="center"><i class="fa fa-2x fa-truck"></i></p>
+      <p align="center"><font size="2">任务清单</font> </p>
+      <div data-role="collapsible" data-theme="a" data-content-theme="a"  data-collapsed-icon="carat-r" data-expanded-icon="carat-d" style="padding:5px 5px; margin: 0px 0px;">
+        <h2>已计划: <font color="black"><b> <span data-bind="text:planedItems().length"></span> </b></font> </h2>
+        <ul data-role="listview" data-inset="true" data-count-theme="e" data-filter="true"  data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'orderHeader', foreach:planedItems},jqmRefreshList:planedItems">
+        </ul>
+      </div>
+      <div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed-icon="carat-r" data-expanded-icon="carat-d" style="padding:5px 5px; margin:0px 0px;">
+        <h2>执行中: <font color="black"><b> <span data-bind="text:unPlanedItems().length"></span> </font> </b></h2>
+        <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true" data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'orderHeader', foreach:unPlanedItems},jqmRefreshList:unPlanedItems ">
+        </ul>
+      </div>
+      <script type="text/html" id="orderHeader">
+            <li>  
+                <a href="#" data-bind="click:$parent.itemClicked"> 
+                    <p><font size="3"><strong data-bind="text:applicationId"></strong></font></p>
+                    <p>车牌: <span data-bind="text:vehicleLicense"></span></p>
+                    <p>手机:<span data-bind="text:mobile"></span></p>
+                    <p>货量:<span data-bind="text:deliveryVolSum"></span></p>
+                    <p>计划日期:<span data-bind="text:planedDevelieryDate"></span></p>
+                    <p>计划时间段:<span data-bind="text:planedEarliestDevelieryDate"></span>-<span data-bind="text:planedLatestDevelieryDate"></span></p>
+                    <p>道口:<span data-bind="text:dock"></span></p>
+                    <span class="ui-li-count ui-body-a"><span data-bind="text:deliveryCount"></span></span>
+                    <input type="hidden" data-bind="value:status" />
+                </a>
+            </li>
+        </script> 
+    </div>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px;"><font color="#264C67"><b>预约执行</b></font><br>
+          <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="#" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-truck"></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b>TE</b></font><br>
+                <font size="2" color="#8E9BB3">X1</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover"><font color="#264C67"><b>欢迎使用iTMS</b></font><br>
+          <font size="1">通过丰富的小应用提升作业效率&nbsp;<i class="fa fa-commenting"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-hand-peace-o "></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b></b></font><br>
+                <font color="#8E9BB3" size="2"></font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+  <!-- /content --> 
+</div>
+<!-- /page myReservationViewModel -->
+<div data-role="page" id="reservationDetailView">
+  <div data-role="content" style="padding: 3px 3px;">
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/bg-profile.png); background-size:cover; border-color:#E4E4E4;">
+      <p align="center"><img class="popphoto" src="images/itmslogo1.png" height="24px"></p>
+      <div class="ui-nodisc-icon ui-alt-icon" > 
+        <!-- Classes added to the wrapper -->
+        <p align="center"><a href="#panelgrid" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-inline" style="margin-right: 0px;">grid</a></p>
+      </div>
+    </div>
+    <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; border-color:#E4E4E4;">
+      <p align="center"><i class="fa fa-2x fa-inbox"></i></p>
+      <p align="center"><font size="2">任务明细</font> </p>
+      <div style="padding:10px 10px;">
+        <p align="center"> <a href="#popqrcode" data-rel="popup" data-position-to="window" data-transition="fade"> <font size="4" color="gray"> <strong data-bind="text:applicationId"></strong> </font> </a> </p>
+        <div data-role="popup" id="popqrcode" data-overlay-theme="a" data-theme="a" data-corners="false"> <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <div id="qrcodearea" data-bind="style:crCode"></div> </div>
+        <fieldset data-role="collapsible" data-theme="a" data-content-theme="a" data-mini="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+          <legend>基本信息</legend>
+          <div data-role="fieldcontain" data-bind="with:basicInformation">
+            <label for="txdr">供应商:</label>
+            <input type="text" name="txdr" id="txdr" data-bind="value:vendorCode" disabled="disabled" data-mini="true" />
+            <label for="txdr">司机:</label>
+            <input type="text" name="txdr" id="txdr" data-bind="value:driverName" disabled="disabled" data-mini="true" />
+            <label for="txmb">手机:</label>
+            <input type="text" name="txmb" id="txmb" data-bind="value:mobileNo" disabled="disabled" data-mini="true" />
+            <label for="txlc">车牌号:</label>
+            <input type="text" name="txlc" id="txlc" data-bind="value:vehicleLicenseNo" disabled="disabled" data-mini="true" />
+            <label for="txlc">车辆类型:</label>
+            <input type="text" name="txvt" id="txvt" data-bind="value:vehicleType" disabled="disabled" data-mini="true" />
+            <label for="dt">到达日期:</label>
+            <input type="date" name="dt" id="dt" data-bind="value:planedDevelieryDate" placeholder="Date" disabled="disabled" data-mini="true" />
+            <label for="te">最早时间:</label>
+            <input type="time" name="te" id="te" data-bind="value:planedEarliestDevelieryDate" placeholder="Time" disabled="disabled" data-mini="true" />
+            <label for="te">最晚时间:</label>
+            <input type="time" name="te" id="te" data-bind="value:planedLatestDevelieryDate" placeholder="Time" disabled="disabled" data-mini="true" />
+          </div>
+        </fieldset>
+        <div data-role="collapsible" data-mini="true" data-theme="a" data-content-theme="a" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+          <h4>交货单: <font color="gray"> <span data-bind="text:deliveryOrders().length"></span> </font> </h4>
+          <ul data-role="listview" data-bind="jqmTemplate:{name:'deliverOrderItem',foreach:deliveryOrders},jqmRefreshList:deliveryOrders">
+          </ul>
+        </div>
+        <p align="center" data-bind="visible:isPlanedOrNot"> 
+          <!--<a href="#popupconfirm" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="check" data-theme="b">开始执行</a>-->
+          <input type="button" data-inline="true" data-theme="d" data-icon="check" value="开始执行" data-bind="click:submit,jQueryButtonDisable:disableSubmit">
+        </p>
+      </div>
+      <script type="text/html" id="deliverOrderItem">
+            <li data-icon = "check" > <a href = "#"> <span data-bind="text:deliveryNoteId"> </span></a> </li>
+        </script>
+      <div data-role="popup" id="popupconfirm" data-theme="a" class="ui-corner-all" data-overlay-theme="a">
+        <div style="padding:10px 20px;">
+          <p align="center"> <strong data-bind="text:applicationId"></strong> </p>
+          <p align="center"> <b> <font color="gray">开始执行预约任务</b> </font> </p>
+          <a href="#" id="btnCancelExcute" data-role="button" data-inline="true" data-icon="delete" data-theme="a" style="margin-right:0px">取消</a> <a href="#" id="btnConfirmExcute" data-role="button" data-bind="click:excuteAppointment" data-inline="true" data-icon="check" data-theme="a" style="margin-right:0px">确认</a> </div>
+      </div>
+      <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+          <h1>错误信息</h1>
+        </div>
+        <div data-role="content" data-theme="a" class="ui-corner-bottom ui-content">
+          <p align="center"> <a href="#"> <img class="popphoto" src="images/warning.png" height="42px"> </a> </p>
+          <p align="center"> <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="a" data-icon="check">确定</a> </p>
+        </div>
+      </div>
+    </div>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px;"><font color="#264C67"><b>预约执行</b></font><br>
+          <font size="1">ver.<b>1.0</b>&nbsp;<i class="fa fa-download"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="#" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-truck"></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b>TE</b></font><br>
+                <font size="2" color="#8E9BB3">X1</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 8px; background-image:url(images/bg/banner15.png); background-size:cover"><font color="#264C67"><b>欢迎使用iTMS</b></font><br>
+          <font size="1">通过丰富的小应用提升作业效率&nbsp;<i class="fa fa-commenting"></i></font><br>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <p align="left"><a href="driverindex.html" rel="external"><font color="#8E9BB3"><i class="fa fa-3x fa-hand-peace-o "></i></font></a></p>
+            </div>
+            <div class="ui-block-b">
+              <p align="right"><font color="#8E9BB3" size="4"><b></b></font><br>
+                <font color="#8E9BB3" size="2"></font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <p align="center">&nbsp;<a href="#"><img class="popphoto" src="images/bg/eorion-log.png" height="24"></a></p>
+    
+    <!-- /content --> 
+  </div>
+</div>
+<div data-role="page" id="resultView">
+  <div data-role="content">
+    <p align="center"> <a href="#"> <img class="popphoto" src="images/calenda.png" height="60px"> </a> </p>
+    <p align="center"> <font size="3" color="gray">道口预约</font> <br>
+      <font size="2">我的预约任务</font> </p>
+  </div>
+  <div style="padding:10px 20px;">
+    <p align="center"> <a href="#"> <img class="popphoto" src="images/done.png" height="50px"> </a> <br>
+      <a href="#" data-role="button" class="ui-icon-nodisc" data-iconshadow="false" data-icon="check" data-iconpos="notext" data-theme="b" data-inline="true">Check</a> <br>
+      <font size="1" color="green">执行成功</font> <br>
+      <br>
+      <font size="4" color="green"> <b>预约号: <span data-bind="text:sucessfullAppointmentId"></span> </b> </font> </p>
+  </div>
+  <div data-role="content">
+    <p align="center"> <a href="#" rel="external"> <img class="popphoto" src="images/itmslogo1.png" height="20px"> </a> </p>
+  </div>
+  <!-- /content --> 
+</div>
+<!-- /page -->
+<style>
+    #owl-demo .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<style>
+    #owl-demo2 .item img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    </style>
+<script>
+$(document).ready(function() {
+ 
+  var owl = $("#owl-demo");
+  owl.owlCarousel({
+
+    autoPlay : 5000,
+    singleItem : true,
+    autoHeight : true, 
+	pagination : false,
+    transitionStyle : "fadeUp"
+  });
+
+  var owl = $("#owl-demo2");  
+ 
+  owl.owlCarousel({
+
+    autoPlay : 6000,
+    singleItem : true,
+    autoHeight : true,
+	pagination : false,
+    transitionStyle : "goDown"
+  });
+ 
+});
+    </script> 
+<script src="OWL/assets/js/bootstrap-collapse.js"></script> 
+<script src="OWL/assets/js/bootstrap-transition.js"></script> 
+<script src="OWL/assets/js/bootstrap-tab.js"></script> 
+<script src="OWL/assets/js/google-code-prettify/prettify.js"></script> 
+<script src="OWL/assets/js/application.js"></script>
+</body>
+</html>
