@@ -1,8 +1,13 @@
+<?php
+require_once "jssdk.php";
+$jssdk = new JSSDK("wx46ec518495a7e2d8", "5b31a1a1b317446c13f84f07e9c7dc0e");
+$signPackage = $jssdk->GetSignPackage();
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iTMS</title>
     <!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" />
     <link href="css/jquery.mobile.theme-1.3.2.css" rel="stylesheet" />
@@ -43,7 +48,7 @@
     <script src="scripts/app/viewmodel/EntryManagementViewModel.js"></script>
     <script src="scripts/app/ko.extentions.js"></script>
     <script src="scripts/app/app.js"></script>
-    <script src="scripts/app/entryManagementApp.js"></script>
+    <!--<script src="scripts/app/entryManagementApp.js"></script>-->
     <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -124,7 +129,7 @@
                 <div data-role="collapsible" data-theme="a" data-content-theme="a" class="ui-icon-alt" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
                     <h2>到达清单</h2>
                     <div class="ui-nodisc-icon ui-alt-icon">
-                        <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-inline" style="margin-right:0px; margin-bottom:15px;">Scan</a></p>
+                        <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-inline" style="margin-right:0px; margin-bottom:15px;" data-bind="click:scanAlreadyArrivedList">Scan</a></p>
                     </div>
                     <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true" data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'appointmentItem', foreach:alreadyArrivedItems},jqmRefreshList:alreadyArrivedItems">
                     </ul>
@@ -132,7 +137,7 @@
                 <div data-role="collapsible" data-theme="a" data-content-theme="a" class="ui-icon-alt" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
                     <h2>已入场清单</h2>
                     <div class="ui-nodisc-icon ui-alt-icon">
-                        <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-inline" style="margin-right:0px; margin-bottom:15px;">Scan</a></p>
+                        <p align="center"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-inline" style="margin-right:0px; margin-bottom:15px;" data-bind="click:scanAlreadyEntryList">Scan</a></p>
                     </div>
                     <ul data-role="listview" data-inset="true" data-count-theme="a" data-filter="true" data-filter-placeholder="筛选" data-bind="jqmTemplate: {name:'appointmentItem', foreach:alreadyEntryItems},jqmRefreshList:alreadyEntryItems">
                     </ul>
@@ -278,5 +283,47 @@
 <script src="OWL/assets/js/bootstrap-tab.js"></script>
 <script src="OWL/assets/js/google-code-prettify/prettify.js"></script>
 <script src="OWL/assets/js/application.js"></script>
+<script>
+// create the various view models
+var entryManagementViewModel = new IMS.EntryManagementViewModel();
+var entryManagementLoginViewModel = new IMS.EntryManagementLoginViewModel();
+$(document).ready(function () {
+    // bind each view model to a jQueryMobile page
+    ko.applyBindings(entryManagementLoginViewModel, document.getElementById("logonView"));
+    ko.applyBindings(entryManagementViewModel, document.getElementById("entryManagementView"));
+    //entryManagementViewModel.init();
+
+    wx.config({
+        debug: false,
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: <?php echo $signPackage["timestamp"];?>,
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+        signature: '<?php echo $signPackage["signature"];?>',
+        jsApiList: [
+        'scanQRCode'
+    ]
+});
+wx.ready(function () {
+    // 在这里调用 API
+
+    // 9 微信原生接口
+    // 9.1.1 扫描二维码并返回结果
+    document.querySelector('#scanQRCode0').onclick = function () {
+        wx.scanQRCode();
+    };
+    // 9.1.2 扫描二维码并返回结果
+    document.querySelector('#scanQRCode1').onclick = function () {
+        wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+    };
+});
+
+});
+</script>
 </body>
 </html>

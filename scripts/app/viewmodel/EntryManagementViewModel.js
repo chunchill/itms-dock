@@ -1,5 +1,5 @@
 ﻿/// <reference path="../../lib/knockout.debug-3.0.0.js" />
-(function (IMS, $, undefined) {
+(function (IMS, $, wx,undefined) {
     IMS.EntryManagementViewModel = function () {
         var self = this;
         self.alreadyEntryItems = ko.observableArray();//status:3
@@ -151,16 +151,42 @@
             $("#popupaction").popup("close");
         };
 
-        self.scanOnTheWayList = function() {
+
+        function qrcodeScanner(i){
             //如果要抓ListView的filter，如果是页面上的第一个就按照下面这样写，类似第二个就是.eq(1)
-            cordova.plugins.barcodeScanner.scan(
-                function (result) {
-                    $("input[data-type='search']").eq(0).val(result.text);
-                },
-                function (error) {
-                    alert("Scanning failed: " + error);
-                }
-            );
+            if(typeof(cordova)!=='undefined'){
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        $("input[data-type='search']").eq(i).val(result.text);
+                    },
+                    function (error) {
+                        alert("Scanning failed: " + error);
+                    }
+                );
+            }else{
+                wx.scanQRCode({
+                    needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                    success: function (res) {
+                        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                        $("input[data-type='search']").eq(i).val(result);
+                        $("input[data-type='search']").eq(i).keyup();
+                    }
+                });
+            }
+        }
+
+        self.scanOnTheWayList = function() {
+            qrcodeScanner(0);
+
+        };
+
+        self.scanAlreadyArrivedList = function(){
+            qrcodeScanner(1);
+        };
+
+        self.scanAlreadyEntryList = function(){
+            qrcodeScanner(2);
         };
 
 
@@ -206,4 +232,4 @@
         }
     }
     return IMS.EntryManagementViewModel;
-})(window.IMS = window.IMS || {}, jQuery);
+})(window.IMS = window.IMS || {},jQuery,wx);
