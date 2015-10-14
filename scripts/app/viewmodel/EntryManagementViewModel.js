@@ -66,7 +66,7 @@
                     newStatusDescription = '4';
                     break;
             }
-            var option = { dock: self.selectedItem.dock(), appId: self.selectedItem.appId(), newStatusDescription: newStatusDescription, date: today, time: self.selectedItem.entryTime() + ':00' };
+            var option = { dock: self.selectedItem.dock(), appId: self.selectedItem.appId(), newStatusDescription: newStatusDescription, date: today, time: $("#s_arrtime").val() + ':00' };
             IMS.datacontext.appointment.addAppTimeline(option).then(function (result) {
                 if (result.errorMessage !== '') {
                     //self.init();
@@ -88,7 +88,7 @@
                                 item.vehicleType = decodeURI(item.vehicleType);
                                 item.vehicleLicense = decodeURI(item.vehicleLicense);
                             })
-                            addStatus(result2[0], 1);
+                            addStatus(result2[0], 2);
                             var list = convertToObservable(result2[0]);
                             self.alreadyArrivedItems(list);
                         }
@@ -99,7 +99,7 @@
                                 item.vehicleType = decodeURI(item.vehicleType);
                                 item.vehicleLicense = decodeURI(item.vehicleLicense);
                             })
-                            addStatus(result3[0], 1);
+                            addStatus(result3[0], 3);
                             var list = convertToObservable(result3[0]);
                             self.alreadyEntryItems(list);
                         }

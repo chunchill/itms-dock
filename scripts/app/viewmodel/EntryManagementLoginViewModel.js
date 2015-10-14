@@ -15,8 +15,7 @@
             IMS.datacontext.user.login(option).then(function (result) {
                 if (result.errorMessage !== 'NO_DATA') {
                     sessionStorage.userInfo = JSON.stringify(result);
-                    entryManagementViewModel.init();
-                    $.mobile.changePage("#entryManagementView");
+                    window.location.replace("entrymanagementIndex.html");
                 }
                 else $("#popupMessage").popup("open");
 
