@@ -44,7 +44,6 @@ $signPackage = $jssdk->GetSignPackage();
     <script src="scripts/lib/wx-1.0.0.js"></script>
     <script src="scripts/app/services/user.js"></script>
     <script src="scripts/app/services/appointment.js"></script>
-    <script src="scripts/app/viewmodel/EntryManagementLoginViewModel.js"></script>
     <script src="scripts/app/viewmodel/EntryManagementViewModel.js"></script>
     <script src="scripts/app/ko.extentions.js"></script>
     <script src="scripts/app/app.js"></script>
@@ -52,36 +51,6 @@ $signPackage = $jssdk->GetSignPackage();
     <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-<div data-role="page" id="logonView" data-theme="a">
-    <div data-role="content">
-        <p align="center"><a href="#"><img class="popphoto" src="images/footico.png" height="60px"></a></p>
-        <p align="center">
-            <font size="3" color="orange"><b>i</font><font size="3" color="#66B3FF">iTMS</font></b><br>
-            <font size="2" color="gray">出入场管理登录</font>
-        </p>
-    </div><!-- /content -->
-    <form>
-        <div style="padding:10px 40px;">
-            <label for="un" class="ui-hidden-accessible">Username:</label>
-            <input type="text" name="user" id="un" value="" placeholder="用户名" data-theme="a" data-inline="true" data-bind="value:user">
-            <label for="pw" class="ui-hidden-accessible">Password:</label>
-            <input type="password" name="pass" id="pw" value="" placeholder="密码" data-theme="a" data-inline="true" data-bind="value:pwd">
-            <p align="center">
-                <button data-theme="b" data-icon="check" data-bind="click:login">登录</button>
-            </p>
-        </div>
-    </form>
-
-    <div data-role="popup" id="popupMessage" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-        <div data-role="header" data-theme="a" class="ui-corner-top">
-            <h1>错误信息</h1>
-        </div>
-        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-            <p>对不起，登录失败，请在确保网络正常的情况下检查用户名和密码！</p>
-            <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">确定</a>
-        </div>
-    </div>
-</div><!-- /page -->
 <div data-role="page" id="entryManagementView" data-theme="a">
     <div data-role="content" style="padding: 3px 3px;">
         <div class="jqm-block-content" style="margin: 2px 2px; padding: 8px 8px; background-image: url(images/bg/banner13.png); background-size:cover; border-color:#E4E4E4;">
@@ -286,12 +255,10 @@ $signPackage = $jssdk->GetSignPackage();
 <script>
 // create the various view models
 var entryManagementViewModel = new IMS.EntryManagementViewModel();
-var entryManagementLoginViewModel = new IMS.EntryManagementLoginViewModel();
 $(document).ready(function () {
     // bind each view model to a jQueryMobile page
-    ko.applyBindings(entryManagementLoginViewModel, document.getElementById("logonView"));
     ko.applyBindings(entryManagementViewModel, document.getElementById("entryManagementView"));
-    //entryManagementViewModel.init();
+    entryManagementViewModel.init();
 
     wx.config({
         debug: false,
