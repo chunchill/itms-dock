@@ -8,9 +8,9 @@
         //--public functions
         self.submit = function () {
             var mobile = self.mobileNumber();
-            setInterval(myreservationModel.init(mobile),5000) ;
+            setInterval(function(){myreservationModel.init(mobile)},5000);
             reservationDetailModel.disableSubmit(false);
-            $.mobile.changePage("#myReservationView");
+            $.mobile.changePage("#myReservationView",{transition:"none"});
         };
     }
     return IMS.InputMobilePageViewModel;

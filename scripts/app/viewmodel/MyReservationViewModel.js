@@ -20,6 +20,7 @@
         };
 
         self.init = function (mobile) {
+
             var option = { mobile: mobile, status: '0' };
             IMS.datacontext.appointment.getAppointmentByMobile(option).then(function (result) {
                 if (result.errorMessage !== 'NO_DATA') {

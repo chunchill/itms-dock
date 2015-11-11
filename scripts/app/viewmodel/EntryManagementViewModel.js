@@ -158,6 +158,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         $("input[data-type='search']").eq(i).val(result.text);
+                        $("input[data-type='search']").eq(i).keyup();
                     },
                     function (error) {
                         alert("Scanning failed: " + error);

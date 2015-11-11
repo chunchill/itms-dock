@@ -73,165 +73,165 @@
                 self.disableSubmit(true);
                 $('#popupconfirm').popup('close');
                 self.sucessfullAppointmentId(option.appId);
-                //add by t.c 20140606
+                ////add by t.c 20140606
+                ////
+                ////
+                ////the block is used for starting GEO tracking when begins to excute the application
+                ////
+                ////
+                //
+                ////create DB in sqlite for recording GEO info.
+                //var db = window.sqlitePlugin.openDatabase({name: "com.blade.itms.location"});
+                //
+                //db.transaction(function(tx) {
+                //    tx.executeSql('CREATE TABLE IF NOT EXISTS location (time_stamp date primary key, latitude number, longitude number, altitude number, accuracy number, altitudeAccuracy number, heading number, speed number)');
+                //}, function(e) {
+                //    console.log("ERROR: " + e.message);
+                //});
+                //
+                //// Your app must execute AT LEAST ONE call for the current position via standard Cordova geolocation,
+                ////  in order to prompt the user for Location permission.
+                //window.navigator.geolocation.getCurrentPosition(function(location) {
+                //    console.log('Location from Phonegap');
+                //});
+                //var bgGeo = window.plugins.backgroundGeoLocation;
+                //
+                ///**
+                // * This would be your own callback for Ajax-requests after POSTing background geolocation to your server.
+                // */
+                //var yourAjaxCallback = function(response) {
+                //    ////
+                //    // IMPORTANT:  You must execute the #finish method here to inform the native plugin that you're finished,
+                //    //  and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
+                //    // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
+                //    //
+                //    //
+                //    bgGeo.finish();
+                //};
+                //
+                //function checkNULL(d) {
+                //    return d == null ? 0 : d;
+                //}
+                //
+                ///**
+                // * This callback will be executed every time a geolocation is recorded in the background.
+                // */
+                //var callbackFn = function(location) {
+                //    console.log('[js] BackgroundGeoLocation callback:  ' + location.latitudue + ',' + location.longitude);
+                //    // Do your HTTP request here to POST location to your server.
+                //    //
+                //    //
+                //    var d = new Date(position.timestamp);
+                //    var hours = d.getHours(),
+                //        minutes = d.getMinutes(),
+                //        seconds = d.getSeconds(),
+                //        month = d.getMonth() + 1,
+                //        day = d.getDate(),
+                //        year = d.getFullYear();
                 //
                 //
-                //the block is used for starting GEO tracking when begins to excute the application
+                //    function pad(d) {
+                //        return (d < 10 ? "0" : "") + d;
+                //    }
                 //
+                //    function checkNaN(i) {
+                //        return isNaN(i) ? "" : i;
+                //    }
                 //
-
-                //create DB in sqlite for recording GEO info.
-                var db = window.sqlitePlugin.openDatabase({name: "com.blade.itms.location"});
-
-                db.transaction(function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS location (time_stamp date primary key, latitude number, longitude number, altitude number, accuracy number, altitudeAccuracy number, heading number, speed number)');
-                }, function(e) {
-                    console.log("ERROR: " + e.message);
-                });
-
-                // Your app must execute AT LEAST ONE call for the current position via standard Cordova geolocation,
-                //  in order to prompt the user for Location permission.
-                window.navigator.geolocation.getCurrentPosition(function(location) {
-                    console.log('Location from Phonegap');
-                });
-                var bgGeo = window.plugins.backgroundGeoLocation;
-
-                /**
-                 * This would be your own callback for Ajax-requests after POSTing background geolocation to your server.
-                 */
-                var yourAjaxCallback = function(response) {
-                    ////
-                    // IMPORTANT:  You must execute the #finish method here to inform the native plugin that you're finished,
-                    //  and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
-                    // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
-                    //
-                    //
-                    bgGeo.finish();
-                };
-
-                function checkNULL(d) {
-                    return d == null ? 0 : d;
-                }
-
-                /**
-                 * This callback will be executed every time a geolocation is recorded in the background.
-                 */
-                var callbackFn = function(location) {
-                    console.log('[js] BackgroundGeoLocation callback:  ' + location.latitudue + ',' + location.longitude);
-                    // Do your HTTP request here to POST location to your server.
-                    //
-                    //
-                    var d = new Date(position.timestamp);
-                    var hours = d.getHours(),
-                        minutes = d.getMinutes(),
-                        seconds = d.getSeconds(),
-                        month = d.getMonth() + 1,
-                        day = d.getDate(),
-                        year = d.getFullYear();
-
-
-                    function pad(d) {
-                        return (d < 10 ? "0" : "") + d;
-                    }
-
-                    function checkNaN(i) {
-                        return isNaN(i) ? "" : i;
-                    }
-
-                    var formattedDate = pad(year) + "-" + pad(month) + "-" + pad(day) + " "
-                        +pad(hours) + ":"
-                        + pad(minutes) + ":"
-                        + pad(seconds);
-                    var db = window.sqlitePlugin.openDatabase({name: "com.blade.itms.location"});
-                    db.transaction(function(tx) {
-                        console.log("INSERT INTO location (time_stamp, latitude, longitude, altitude, accuracy, altitudeAccuracy, heading, speed) VALUES (?,?,?,?,?,?,?,?)" + formattedDate + checkNaN(location.latitude));
-                        tx.executeSql("INSERT INTO location (time_stamp, latitude, longitude, altitude, accuracy, altitudeAccuracy, heading, speed) VALUES (?,?,?,?,?,?,?,?)",
-                            [formattedDate, checkNaN(location.latitude),checkNaN(location.longitude),0,
-                                checkNaN(location.accuracy), 0, 0,
-                                checkNaN(location.speed)], function(tx, res) {
-                            });
-                    });
-                    yourAjaxCallback.call(this);
-                };
-
-                var failureFn = function(error) {
-                    console.log('BackgroundGeoLocation error');
-                }
-
-                // BackgroundGeoLocation is highly configurable.
-                bgGeo.configure(callbackFn, failureFn, {
-                    /*
-                    url: 'http://211.144.85.15', // <-- only required for Android; ios allows javascript callbacks for your http
-                    params: {                                               // HTTP POST params sent to your server when persisting locations.
-                        auth_token: 'user_secret_auth_token',
-                        foo: 'bar'
-                    },
-                    */
-                    desiredAccuracy: 10,
-                    locationTimeout: 30, // seconds
-                    stationaryRadius: 50,
-                    distanceFilter: 10,
-                    debug: true // <-- enable this hear sounds for background-geolocation life-cycle.
-                });
-
-                // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
-                bgGeo.start();
-
-                // If you wish to turn OFF background-tracking, call the #stop method.
-                // bgGeo.stop()
-                if (null === window.localStorage.getItem("sendGeoIntervalID")) {
-                } else {
-                    var intervalID = window.localStorage.getItem("sendGeoIntervalID");
-                    window.clearInterval(intervalID);
-                }
-
-                var intervalID = window.setInterval(doSending, 10 * 1000);
-                window.localStorage.setItem("sendGeoIntervalID", intervalID);
-
-                function doSending() {
-                    var db = window.sqlitePlugin.openDatabase({name: "cordova_bg_locations"});
-
-                    function doDel(time_stamp, accuracy, speed, latitude, longitude) {
-                        var params = {  appId: self.applicationId(),
-                            mobile:self.basicInformation.mobileNo(),
-                            speed:(checkNULL(speed) + "").substr(0, 10),
-                            bearing:-1,
-                            latitude:checkNULL(latitude),
-                            longitude:checkNULL(longitude),
-                            timestamp: time_stamp };
-                        console.log(params);
-                        IMS.datacontext.appointment.sendLocation(params).then(function (result) {
-                            if (result.errorMessage !== 'NO_DATA') {
-                                if (result.errorMessage === 'STOP')
-                                    bgGeo.stop();
-                                var db = window.sqlitePlugin.openDatabase({name: "cordova_bg_locations"});
-                                db.transaction(function(tx) {
-                                    tx.executeSql("delete from location where recordedAt=?;", [time_stamp], function(tx, res) {
-                                    });});
-                                doSending();
-                            }
-                        });
-                    }
-
-                    db.transaction(function(tx) {
-                        tx.executeSql("select * from location order by recordedAt asc limit 1;", [], function(tx, res) {
-                            if (res.rows.length == 0) {
-                                console.log("db size " + res.rows.length);
-                            } else {
-                                console.log("db size" + res.rows.length);
-                                console.log("recordedAt" + res.rows.item(0).recordedAt +'\n'
-                                + "accuracy" + res.rows.item(0).accuracy +'\n'
-                                + "speed" + res.rows.item(0).speed +'\n'
-                                + "latitude" + res.rows.item(0).latitude +'\n'
-                                + "longitude" + res.rows.item(0).longitude +'\n');
-                                doDel(res.rows.item(0).recordedAt, res.rows.item(0).accuracy, res.rows.item(0).speed,
-                                    res.rows.item(0).latitude, res.rows.item(0).longitude);
-                            }
-                        });
-                    });
-                }
-
-
+                //    var formattedDate = pad(year) + "-" + pad(month) + "-" + pad(day) + " "
+                //        +pad(hours) + ":"
+                //        + pad(minutes) + ":"
+                //        + pad(seconds);
+                //    var db = window.sqlitePlugin.openDatabase({name: "com.blade.itms.location"});
+                //    db.transaction(function(tx) {
+                //        console.log("INSERT INTO location (time_stamp, latitude, longitude, altitude, accuracy, altitudeAccuracy, heading, speed) VALUES (?,?,?,?,?,?,?,?)" + formattedDate + checkNaN(location.latitude));
+                //        tx.executeSql("INSERT INTO location (time_stamp, latitude, longitude, altitude, accuracy, altitudeAccuracy, heading, speed) VALUES (?,?,?,?,?,?,?,?)",
+                //            [formattedDate, checkNaN(location.latitude),checkNaN(location.longitude),0,
+                //                checkNaN(location.accuracy), 0, 0,
+                //                checkNaN(location.speed)], function(tx, res) {
+                //            });
+                //    });
+                //    yourAjaxCallback.call(this);
+                //};
+                //
+                //var failureFn = function(error) {
+                //    console.log('BackgroundGeoLocation error');
+                //}
+                //
+                //// BackgroundGeoLocation is highly configurable.
+                //bgGeo.configure(callbackFn, failureFn, {
+                //    /*
+                //    url: 'http://211.144.85.15', // <-- only required for Android; ios allows javascript callbacks for your http
+                //    params: {                                               // HTTP POST params sent to your server when persisting locations.
+                //        auth_token: 'user_secret_auth_token',
+                //        foo: 'bar'
+                //    },
+                //    */
+                //    desiredAccuracy: 10,
+                //    locationTimeout: 30, // seconds
+                //    stationaryRadius: 50,
+                //    distanceFilter: 10,
+                //    debug: true // <-- enable this hear sounds for background-geolocation life-cycle.
+                //});
+                //
+                //// Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
+                //bgGeo.start();
+                //
+                //// If you wish to turn OFF background-tracking, call the #stop method.
+                //// bgGeo.stop()
+                //if (null === window.localStorage.getItem("sendGeoIntervalID")) {
+                //} else {
+                //    var intervalID = window.localStorage.getItem("sendGeoIntervalID");
+                //    window.clearInterval(intervalID);
+                //}
+                //
+                //var intervalID = window.setInterval(doSending, 10 * 1000);
+                //window.localStorage.setItem("sendGeoIntervalID", intervalID);
+                //
+                //function doSending() {
+                //    var db = window.sqlitePlugin.openDatabase({name: "cordova_bg_locations"});
+                //
+                //    function doDel(time_stamp, accuracy, speed, latitude, longitude) {
+                //        var params = {  appId: self.applicationId(),
+                //            mobile:self.basicInformation.mobileNo(),
+                //            speed:(checkNULL(speed) + "").substr(0, 10),
+                //            bearing:-1,
+                //            latitude:checkNULL(latitude),
+                //            longitude:checkNULL(longitude),
+                //            timestamp: time_stamp };
+                //        console.log(params);
+                //        IMS.datacontext.appointment.sendLocation(params).then(function (result) {
+                //            if (result.errorMessage !== 'NO_DATA') {
+                //                if (result.errorMessage === 'STOP')
+                //                    bgGeo.stop();
+                //                var db = window.sqlitePlugin.openDatabase({name: "cordova_bg_locations"});
+                //                db.transaction(function(tx) {
+                //                    tx.executeSql("delete from location where recordedAt=?;", [time_stamp], function(tx, res) {
+                //                    });});
+                //                doSending();
+                //            }
+                //        });
+                //    }
+                //
+                //    db.transaction(function(tx) {
+                //        tx.executeSql("select * from location order by recordedAt asc limit 1;", [], function(tx, res) {
+                //            if (res.rows.length == 0) {
+                //                console.log("db size " + res.rows.length);
+                //            } else {
+                //                console.log("db size" + res.rows.length);
+                //                console.log("recordedAt" + res.rows.item(0).recordedAt +'\n'
+                //                + "accuracy" + res.rows.item(0).accuracy +'\n'
+                //                + "speed" + res.rows.item(0).speed +'\n'
+                //                + "latitude" + res.rows.item(0).latitude +'\n'
+                //                + "longitude" + res.rows.item(0).longitude +'\n');
+                //                doDel(res.rows.item(0).recordedAt, res.rows.item(0).accuracy, res.rows.item(0).speed,
+                //                    res.rows.item(0).latitude, res.rows.item(0).longitude);
+                //            }
+                //        });
+                //    });
+                //}longitude
+                var mobile = self.basicInformation.mobileNo();
+                myreservationModel.init(mobile);
                 $.mobile.changePage("#myReservationView");
             }, function (result) {
                 $('#popupMessage').popup();
